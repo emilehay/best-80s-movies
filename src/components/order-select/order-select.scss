@@ -1,0 +1,25 @@
+.order-select{
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+
+    .order-btn{
+        appearance: none;
+        -webkit-appearance: none;
+        background-color: rgba(255,255,255,0.1);
+        border: none;
+        border-radius: 1rem;
+        color: #fff;
+        cursor: pointer;
+        font-family: 'Questrial', sans-serif;
+        height: 2rem;
+        padding: 0 1rem;
+        margin-left: 1rem;
+        transition: background-color 0.2s ease-in-out;
+
+        &:hover{
+            background-color: rgba(255,255,255,0.2);
+        }
+    }
+}
