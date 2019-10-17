@@ -1,49 +1,54 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import MovieList from '../components/movie-list/movie-list';
 import OrderSelect from '../components/order-select/order-select';
+import PropTypes from 'prop-types'
+import { getAppLayout } from '../actions/appActions';
 
-export default class App extends Component {
-  
-  state = {
-    sortOrder: '',
-    loading: false,
-    components: [],
-  };
+const App = ({ app: { layout, loading }, getAppLayout }) => {
 
-  async componentDidMount(){
-      this.setState({ loading: true });
-      const response = await axios.get('http://demo9595712.mockable.io/getTopFiveMovies');
-      this.setState({ loading: false, components: response.data.components });
+  useEffect(() => {
+    getAppLayout();
+  }, []);
+
+  // changeOrder = value => {
+  //   this.setState({ sortOrder: value });
+  // }
+
+  if(loading || layout === null){
+    return <h1>Loading...</h1>;
   }
-
-  changeOrder = value => {
-    this.setState({ sortOrder: value });
-  }
-  
-  render(){
     
-    return (
-      <div className='best-80s-movies'>
-        <div className='container'>
-          {
-            this.state.components.map((component, index) => {
-              switch(component.type){
-                case 'movie-list': {
-                  return <MovieList key={index} items={component.items} sortOrder={this.state.sortOrder} />;
-                }
-                case 'order-select': {
-                  return <OrderSelect key={index} changeOrder={this.changeOrder} items={component.items} />;
-                }
-                default: {
-                  return;
-                  break;
-                }
+  return (
+    <div className='best-80s-movies'>
+      <div className='container'>
+        {
+          layout.components.map((component, index) => {
+            switch(component.type){
+              case 'movie-list': {
+                // return <MovieList key={index} items={component.items} />;
               }
-            })
-          }
-        </div>
+              case 'order-select': {
+                // return <OrderSelect key={index} changeOrder={this.changeOrder} items={component.items} />;
+              }
+              default: {
+                return;
+                break;
+              }
+            }
+          })
+        }
       </div>
-    );
-  }
+    </div>
+  );
+};
+
+App.propTypes = {
+  app: PropTypes.object.isRequired,
 }
+
+const mapStateToProps = state => ({
+  app: state.app
+});
+
+export default connect(mapStateToProps, { getAppLayout })(App);

@@ -1,0 +1,3 @@
+export const GET_APP_LAYOUT = 'GET_APP_LAYOUT';
+export const SET_LOADING = 'SET_LOADING';
+export const APP_LAYOUT_ERROR = 'APP_LAYOUT_ERROR';
