@@ -1,0 +1,27 @@
+.movie-detail-box{
+    align-items: center;
+    background-color: rgba(0,0,0,0.2);
+    display: flex;
+    padding: 30px;
+
+    .image-wrapper{
+        margin-right: 30px;
+        max-width: 30%;
+
+        img{
+            width: 100%;
+        }
+    }
+
+    .content-wrapper{
+        color: #fff;
+
+        h1{
+            margin-top: 0px;
+        }
+
+        span{
+            margin-right: 1rem;
+        }
+    }
+}

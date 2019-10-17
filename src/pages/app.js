@@ -16,7 +16,7 @@ const App = ({ app: { layout, loading, sortOrder }, getAppLayout }) => {
   }
     
   return (
-    <div className='best-80s-movies'>
+    <div className='home-page'>
       <div className='container'>
         {
           layout.components.map((component, index) => {

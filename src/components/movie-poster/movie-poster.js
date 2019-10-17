@@ -1,15 +1,29 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './movie-poster.scss';
+import PropTypes from 'prop-types'
+import { setCurrentMovie } from '../../actions/appActions';
 
-class MoviePoster extends Component {
+const MoviePoster = ({ setCurrentMovie, details }) => {
 
-    render(){
-        return (
-            <div className='movie-poster'>
-                <img src={this.props.details.imageUrl} alt={this.props.details.title}/>
-            </div>
-        )
-    };
+    const [toMovie, setToMovie] = useState(false);
+
+    const _setCurrentMovie = () => {
+        setCurrentMovie(details);
+        setToMovie(true);
+    }
+
+    return (
+        <div className='movie-poster' onClick={_setCurrentMovie}>
+            { toMovie && <Redirect to={'/movies/' + details.rank} />}
+            <img src={details.imageUrl} alt={details.title}/>
+        </div>
+    )
 }
 
-export default MoviePoster;
+MoviePoster.propTypes = {
+    setCurrentMovie: PropTypes.func.isRequired,
+}
+
+export default connect(null, { setCurrentMovie })(MoviePoster);

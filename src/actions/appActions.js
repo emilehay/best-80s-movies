@@ -1,4 +1,4 @@
-import { GET_APP_LAYOUT, SET_LOADING, APP_LAYOUT_ERROR, SET_SORT_ORDER } from './types';
+import { GET_APP_LAYOUT, SET_LOADING, APP_LAYOUT_ERROR, SET_SORT_ORDER, SET_CURRENT_MOVIE } from './types';
 import axios from 'axios';
 
 //Get app layout & components from API
@@ -29,6 +29,16 @@ export const setSortOrder = (sortOrder) => {
         type: SET_SORT_ORDER,
         payload: sortOrder
     };
+}
+
+//Set the current movie
+export const setCurrentMovie = (id) => {
+
+    return {
+        type: SET_CURRENT_MOVIE,
+        payload: id
+    }
+
 }
 
 //Set loading to true

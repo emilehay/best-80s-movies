@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import MoviePoster from './../movie-poster/movie-poster';
 import './movie-list.scss';
 

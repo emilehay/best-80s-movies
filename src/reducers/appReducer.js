@@ -1,4 +1,4 @@
-import { GET_APP_LAYOUT, SET_LOADING, APP_LAYOUT_ERROR, SET_SORT_ORDER } from '../actions/types';
+import { GET_APP_LAYOUT, SET_LOADING, APP_LAYOUT_ERROR, SET_SORT_ORDER, SET_CURRENT_MOVIE } from '../actions/types';
 
 const initialState = {
     layout: null,
@@ -31,6 +31,12 @@ export default(state = initialState, action) => {
             return {
                 ...state,
                 sortOrder: action.payload,
+                loading: false,
+            }
+        case SET_CURRENT_MOVIE:
+            return {
+                ...state,
+                current: action.payload,
                 loading: false,
             }
         default:
