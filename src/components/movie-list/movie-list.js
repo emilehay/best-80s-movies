@@ -9,10 +9,28 @@ class MovieList extends Component {
     };
 
     render(){
+
+        let sortedMovies;
+
+        switch(this.props.sortOrder){
+            case 'rank': {
+                sortedMovies = this.state.movies.sort((a, b) => a.rank - b.rank);
+                break;
+            }
+            case 'releaseDate': {
+                sortedMovies = this.state.movies.sort((a, b) => a.releaseDate - b.releaseDate);
+                break;
+            }
+            default: {
+                sortedMovies = this.state.movies.sort((a, b) => a.rank - b.rank);
+                break;
+            }
+        }
+
         return (
             <div className='movie-list'>
                 {
-                    this.state.movies.map(movie => {
+                    sortedMovies.map(movie => {
                         return (
                             <MoviePoster details={movie}/>
                         );

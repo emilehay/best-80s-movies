@@ -13,7 +13,7 @@ class OrderSelect extends Component {
                 {
                     this.state.options.map(option => {
                         return (
-                            <button className='order-btn' type='button'>{option.label}</button>
+                            <button className='order-btn' onClick={this.props.changeOrder.bind(this, option.valueToOrderBy)} type='button'>{option.label}</button>
                         );
                     })
                 }

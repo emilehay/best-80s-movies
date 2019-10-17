@@ -7,6 +7,7 @@ import './styles/styles.scss';
 class App extends Component {
   
   state = {
+    sortOrder: '',
     loading: false,
     components: [],
   };
@@ -15,6 +16,10 @@ class App extends Component {
       this.setState({ loading: true });
       const response = await axios.get('http://demo9595712.mockable.io/getTopFiveMovies');
       this.setState({ loading: false, components: response.data.components });
+  }
+
+  changeOrder = value => {
+    this.setState({ sortOrder: value });
   }
   
   render(){
@@ -26,10 +31,10 @@ class App extends Component {
             this.state.components.map(component => {
               switch(component.type){
                 case 'movie-list': {
-                  return <MovieList items={component.items} />;
+                  return <MovieList items={component.items} sortOrder={this.state.sortOrder} />;
                 }
                 case 'order-select': {
-                  return <OrderSelect items={component.items}  />;
+                  return <OrderSelect changeOrder={this.changeOrder} items={component.items} />;
                 }
                 default: {
                   return;

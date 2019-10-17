@@ -3,14 +3,10 @@ import './movie-poster.scss';
 
 class MoviePoster extends Component {
 
-    state = {
-        details: this.props.details,
-    };
-
     render(){
         return (
             <div className='movie-poster'>
-                <img src={this.state.details.imageUrl} alt={this.state.details.title}/>
+                <img src={this.props.details.imageUrl} alt={this.props.details.title}/>
             </div>
         )
     };
