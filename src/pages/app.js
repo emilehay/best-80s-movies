@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import MovieList from './components/movie-list/movie-list';
-import OrderSelect from './components/order-select/order-select';
-import './styles/styles.scss';
+import MovieList from '../components/movie-list/movie-list';
+import OrderSelect from '../components/order-select/order-select';
 
-class App extends Component {
+export default class App extends Component {
   
   state = {
     sortOrder: '',
@@ -48,5 +47,3 @@ class App extends Component {
     );
   }
 }
-
-export default App;
