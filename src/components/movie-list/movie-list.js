@@ -2,43 +2,37 @@ import React, { Component } from 'react';
 import MoviePoster from './../movie-poster/movie-poster';
 import './movie-list.scss';
 
-class MovieList extends Component {
+const MovieList = ({ movies, sortOrder }) => {
 
-    state = {
-        movies: this.props.items,
-    };
+    let sortedMovies = movies;
 
-    render(){
-
-        let sortedMovies;
-
-        switch(this.props.sortOrder){
-            case 'rank': {
-                sortedMovies = this.state.movies.sort((a, b) => a.rank - b.rank);
-                break;
-            }
-            case 'releaseDate': {
-                sortedMovies = this.state.movies.sort((a, b) => a.releaseDate - b.releaseDate);
-                break;
-            }
-            default: {
-                sortedMovies = this.state.movies.sort((a, b) => a.rank - b.rank);
-                break;
-            }
+    switch(sortOrder){
+        case 'rank': {
+            sortedMovies.sort((a, b) => a.rank - b.rank);
+            break;
         }
+        case 'releaseDate': {
+            sortedMovies.sort((a, b) => a.releaseDate - b.releaseDate);
+            break;
+        }
+        default: {
+            sortedMovies.sort((a, b) => a.rank - b.rank);
+            break;
+        }
+    }
 
-        return (
-            <div className='movie-list'>
-                {
-                    sortedMovies.map(movie => {
-                        return (
-                            <MoviePoster key={movie.id} details={movie}/>
-                        );
-                    })
-                }
-            </div>
-        )
-    };
-}
+    return (
+        <div className='movie-list'>
+            {
+                sortedMovies.map(movie => {
+                    return (
+                        <MoviePoster key={movie.id} details={movie}/>
+                    );
+                })
+            }
+        </div>
+    );
+    
+};
 
 export default MovieList;

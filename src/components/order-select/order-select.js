@@ -1,25 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import './order-select.scss';
+import PropTypes from 'prop-types'
+import { setSortOrder } from '../../actions/appActions';
 
-class OrderSelect extends Component {
+const OrderSelect = ({ setSortOrder, options }) => {
 
-    state = {
-        options: this.props.items,
-    };
-
-    render(){
-        return (
-            <div className='order-select'>
-                {
-                    this.state.options.map((option, index) => {
-                        return (
-                            <button key={index} className='order-btn' onClick={this.props.changeOrder.bind(this, option.valueToOrderBy)} type='button'>{option.label}</button>
-                        );
-                    })
-                }
-            </div>
-        )
-    };
+    return (
+        <div className='order-select'>
+            {
+                options.map((option, index) => {
+                    return (
+                        <button key={index} className='order-btn' onClick={setSortOrder.bind(this, option.valueToOrderBy)} type='button'>{option.label}</button>
+                    );
+                })
+            }
+        </div>
+    )
 }
 
-export default OrderSelect;
+OrderSelect.propTypes = {
+    setSortOrder: PropTypes.func.isRequired,
+}
+
+export default connect(null, { setSortOrder })(OrderSelect);

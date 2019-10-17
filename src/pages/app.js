@@ -5,15 +5,11 @@ import OrderSelect from '../components/order-select/order-select';
 import PropTypes from 'prop-types'
 import { getAppLayout } from '../actions/appActions';
 
-const App = ({ app: { layout, loading }, getAppLayout }) => {
+const App = ({ app: { layout, loading, sortOrder }, getAppLayout }) => {
 
   useEffect(() => {
     getAppLayout();
   }, []);
-
-  // changeOrder = value => {
-  //   this.setState({ sortOrder: value });
-  // }
 
   if(loading || layout === null){
     return <h1>Loading...</h1>;
@@ -26,14 +22,13 @@ const App = ({ app: { layout, loading }, getAppLayout }) => {
           layout.components.map((component, index) => {
             switch(component.type){
               case 'movie-list': {
-                // return <MovieList key={index} items={component.items} />;
+                return <MovieList key={index} movies={component.items} sortOrder={sortOrder} />;
               }
               case 'order-select': {
-                // return <OrderSelect key={index} changeOrder={this.changeOrder} items={component.items} />;
+                return <OrderSelect key={index} options={component.items} />;
               }
               default: {
                 return;
-                break;
               }
             }
           })
@@ -45,6 +40,7 @@ const App = ({ app: { layout, loading }, getAppLayout }) => {
 
 App.propTypes = {
   app: PropTypes.object.isRequired,
+  getAppLayout: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
