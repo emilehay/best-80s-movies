@@ -11,9 +11,9 @@ class OrderSelect extends Component {
         return (
             <div className='order-select'>
                 {
-                    this.state.options.map(option => {
+                    this.state.options.map((option, index) => {
                         return (
-                            <button className='order-btn' onClick={this.props.changeOrder.bind(this, option.valueToOrderBy)} type='button'>{option.label}</button>
+                            <button key={index} className='order-btn' onClick={this.props.changeOrder.bind(this, option.valueToOrderBy)} type='button'>{option.label}</button>
                         );
                     })
                 }

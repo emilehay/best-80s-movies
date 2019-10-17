@@ -27,13 +27,13 @@ export default class App extends Component {
       <div className='best-80s-movies'>
         <div className='container'>
           {
-            this.state.components.map(component => {
+            this.state.components.map((component, index) => {
               switch(component.type){
                 case 'movie-list': {
-                  return <MovieList items={component.items} sortOrder={this.state.sortOrder} />;
+                  return <MovieList key={index} items={component.items} sortOrder={this.state.sortOrder} />;
                 }
                 case 'order-select': {
-                  return <OrderSelect changeOrder={this.changeOrder} items={component.items} />;
+                  return <OrderSelect key={index} changeOrder={this.changeOrder} items={component.items} />;
                 }
                 default: {
                   return;

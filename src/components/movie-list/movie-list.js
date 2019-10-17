@@ -32,7 +32,7 @@ class MovieList extends Component {
                 {
                     sortedMovies.map(movie => {
                         return (
-                            <MoviePoster details={movie}/>
+                            <MoviePoster key={movie.id} details={movie}/>
                         );
                     })
                 }
