@@ -37,7 +37,7 @@ const MovieList = ({ movies, sortOrder }) => {
 };
 
 MovieList.propTypes = {
-    movies: PropTypes.object.isRequired,
+    movies: PropTypes.array.isRequired,
     sortOrder: PropTypes.string,
 }
 
