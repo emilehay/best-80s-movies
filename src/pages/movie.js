@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import MovieDetailBox from '../components/movie-detail-box/movie-detail-box';
 import { getAppLayout, setCurrentMovie } from '../actions/appActions';
 import PropTypes from 'prop-types';
