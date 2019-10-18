@@ -1,5 +1,6 @@
 import React from 'react';
 import './movie-detail-box.scss';
+import PropTypes from 'prop-types'
 
 const MovieDetailBox = ({ details }) => {
     return (
@@ -17,6 +18,10 @@ const MovieDetailBox = ({ details }) => {
             </div>
         </div>
     )
+}
+
+MovieDetailBox.propTypes = {
+    details: PropTypes.object.isRequired,
 }
 
 export default MovieDetailBox

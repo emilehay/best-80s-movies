@@ -5,7 +5,7 @@ import './movie-poster.scss';
 import PropTypes from 'prop-types'
 import { setCurrentMovie } from '../../actions/appActions';
 
-const MoviePoster = ({ setCurrentMovie, details }) => {
+const MoviePoster = ({ details, setCurrentMovie }) => {
 
     const [toMovie, setToMovie] = useState(false);
 
@@ -23,6 +23,7 @@ const MoviePoster = ({ setCurrentMovie, details }) => {
 }
 
 MoviePoster.propTypes = {
+    details: PropTypes.object.isRequired,
     setCurrentMovie: PropTypes.func.isRequired,
 }
 

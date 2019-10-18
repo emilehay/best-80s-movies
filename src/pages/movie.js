@@ -5,7 +5,7 @@ import MovieDetailBox from '../components/movie-detail-box/movie-detail-box';
 import { getAppLayout, setCurrentMovie } from '../actions/appActions';
 import PropTypes from 'prop-types';
 
-const Movie = ({ app: { layout, current, loading }, getAppLayout, setCurrentMovie, match, history }) => {
+const Movie = ({ app: { layout, current, loading }, getAppLayout, match, setCurrentMovie }) => {
 
     useEffect(() => {
         if(layout === null){
@@ -45,6 +45,7 @@ const Movie = ({ app: { layout, current, loading }, getAppLayout, setCurrentMovi
 Movie.propTypes = {
     app: PropTypes.object.isRequired,
     getAppLayout: PropTypes.func.isRequired,
+    match: PropTypes.object,
     setCurrentMovie: PropTypes.func.isRequired,
 }
 

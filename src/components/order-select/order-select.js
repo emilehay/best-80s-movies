@@ -4,7 +4,7 @@ import './order-select.scss';
 import PropTypes from 'prop-types'
 import { setSortOrder } from '../../actions/appActions';
 
-const OrderSelect = ({ setSortOrder, options }) => {
+const OrderSelect = ({ options, setSortOrder }) => {
 
     return (
         <div className='order-select'>
@@ -20,6 +20,7 @@ const OrderSelect = ({ setSortOrder, options }) => {
 }
 
 OrderSelect.propTypes = {
+    options: PropTypes.array.isRequired,
     setSortOrder: PropTypes.func.isRequired,
 }
 

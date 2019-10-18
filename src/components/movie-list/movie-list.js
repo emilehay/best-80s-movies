@@ -1,6 +1,7 @@
 import React from 'react';
 import MoviePoster from './../movie-poster/movie-poster';
 import './movie-list.scss';
+import PropTypes from 'prop-types'
 
 const MovieList = ({ movies, sortOrder }) => {
 
@@ -34,5 +35,10 @@ const MovieList = ({ movies, sortOrder }) => {
     );
     
 };
+
+MovieList.propTypes = {
+    movies: PropTypes.object.isRequired,
+    sortOrder: PropTypes.string,
+}
 
 export default MovieList;
