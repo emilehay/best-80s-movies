@@ -16,7 +16,7 @@ const MoviePoster = ({ setCurrentMovie, details }) => {
 
     return (
         <div className='movie-poster' onClick={_setCurrentMovie}>
-            { toMovie && <Redirect to={'/movies/' + details.rank} />}
+            { toMovie && <Redirect to={`/movies/${details.rank}`} />}
             <img src={details.imageUrl} alt={details.title}/>
         </div>
     )

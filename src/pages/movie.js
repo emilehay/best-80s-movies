@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import MovieDetailBox from '../components/movie-detail-box/movie-detail-box';
-import { getAppLayout } from '../actions/appActions';
+import { getAppLayout, setCurrentMovie } from '../actions/appActions';
 import PropTypes from 'prop-types';
 
-const Movie = ({ app: { layout, current, loading }, getAppLayout }) => {
+const Movie = ({ app: { layout, current, loading }, getAppLayout, setCurrentMovie, match, history }) => {
 
     useEffect(() => {
         if(layout === null){
@@ -14,6 +14,21 @@ const Movie = ({ app: { layout, current, loading }, getAppLayout }) => {
     }, []);
 
     if(loading || layout === null){
+        return <h1>Loading...</h1>;
+    } else if(layout && current === null) {
+        const rank = match.params.rank;
+        layout.components.map((component, index) => {
+            switch(component.type){
+                case 'movie-list': {
+                    let sortedMovies = component.items;
+                    sortedMovies.sort((a, b) => a.rank - b.rank);
+                    setCurrentMovie(sortedMovies[rank-1]);
+                }
+                default: {
+                    return;
+                }
+            }
+        })
         return <h1>Loading...</h1>;
     }
 
@@ -30,10 +45,11 @@ const Movie = ({ app: { layout, current, loading }, getAppLayout }) => {
 Movie.propTypes = {
     app: PropTypes.object.isRequired,
     getAppLayout: PropTypes.func.isRequired,
+    setCurrentMovie: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
     app: state.app
 });
   
-export default connect(mapStateToProps, { getAppLayout })(Movie);
+export default connect(mapStateToProps, { getAppLayout, setCurrentMovie })(Movie);

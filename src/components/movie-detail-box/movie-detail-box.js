@@ -9,7 +9,7 @@ const MovieDetailBox = ({ details }) => {
             </div>
             <div className='content-wrapper'>
                 <h1>{details.title}</h1>
-                <div class='metadata'>
+                <div className='metadata'>
                     <span>Released: {details.releaseDate}</span>
                     <span>Rank: {details.rank}</span>
                 </div>
