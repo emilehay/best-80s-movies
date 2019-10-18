@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
 import MovieDetailBox from '../components/movie-detail-box/movie-detail-box';
 import { getAppLayout, setCurrentMovie } from '../actions/appActions';
 import PropTypes from 'prop-types';
@@ -23,6 +23,7 @@ const Movie = ({ app: { layout, current, loading }, getAppLayout, match, setCurr
                     let sortedMovies = component.items;
                     sortedMovies.sort((a, b) => a.rank - b.rank);
                     setCurrentMovie(sortedMovies[rank-1]);
+                    break;
                 }
                 default: {
                     return;
